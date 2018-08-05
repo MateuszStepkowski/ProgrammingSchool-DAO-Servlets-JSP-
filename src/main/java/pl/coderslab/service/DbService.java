@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class DbService {
 
-    private static String dbName = "Book02";
+    private static String dbName = "ProgrammingSchool";
     private static String dbUser = "root";
     private static String dbPass = "coderslab";
 
