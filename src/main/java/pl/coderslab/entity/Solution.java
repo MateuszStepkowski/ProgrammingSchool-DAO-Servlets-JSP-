@@ -1,15 +1,15 @@
 package pl.coderslab.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Solution {
 
     private Integer id;
-    private  Date created;
-    private Date updated;
+    private Timestamp created;
+    private Timestamp updated;
     private String description;
-    private Integer exercise_id;
-    private Integer users_id;
+    private Exercise exercise;
+    private User user;
 
 
     public Integer getId() {
@@ -20,19 +20,19 @@ public class Solution {
         this.id = id;
     }
 
-    public Date getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 
-    public Date getUpdated() {
+    public Timestamp getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(Timestamp updated) {
         this.updated = updated;
     }
 
@@ -44,29 +44,31 @@ public class Solution {
         this.description = description;
     }
 
-    public Integer getExercise_id() {
-        return exercise_id;
+    public Exercise getExercise() {
+        return exercise;
     }
 
-    public void setExercise_id(Integer exercise_id) {
-        this.exercise_id = exercise_id;
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 
-    public Integer getUsers_id() {
-        return users_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers_id(Integer users_id) {
-        this.users_id = users_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
-        return "\nSolution id: " + id +
-                "  | created: " + created +
-                "  | updated: " + updated +
-                "\ndescription:\n" + description + '\n' +
-                "exercise_id: " + exercise_id +
-                "  |  users_id: " + users_id;
+        return "Solution{" +
+                "id=" + id +
+                ", created=" + created +
+                ", updated=" + updated +
+                ", description='" + description + '\'' +
+                ", exercise=" + exercise +
+                ", user=" + user +
+                '}';
     }
 }

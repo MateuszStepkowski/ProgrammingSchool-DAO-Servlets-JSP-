@@ -8,7 +8,7 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private Integer user_group_id;
+    private UserGroup userGroup;
 
 
     public Integer getId() {
@@ -43,20 +43,22 @@ public class User {
         this.email = email;
     }
 
-    public Integer getUser_group_id() {
-        return user_group_id;
+    public UserGroup getUserGroup() {
+        return userGroup;
     }
 
-    public void setUser_group_id(Integer user_group_id) {
-        this.user_group_id = user_group_id;
+    public void setUserGroup(UserGroup userGroup) {
+        this.userGroup = userGroup;
     }
 
     @Override
     public String toString() {
-        return  "\nid: " + id +
-                "  | username: " + username +
-                "  | password; " + password +
-                "  | email: " + email+
-                "  | user_group_id: " + user_group_id;
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", userGroup=" + userGroup +
+                '}';
     }
 }

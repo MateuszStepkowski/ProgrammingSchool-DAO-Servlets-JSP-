@@ -1,7 +1,7 @@
 package pl.coderslab.entity;
 
 
-public class Group {
+public class UserGroup {
 
 
     private Integer id;

@@ -27,7 +27,7 @@ public class DbService {
      * @return id or null
      * @throws SQLException
      */
-    public static Integer insertIntoDatabase(String query, List<String> params) throws Exception {
+    public static Integer insertIntoDataBase(String query, List<String> params) throws Exception {
 
         try(Connection conn = createConn()){
 
