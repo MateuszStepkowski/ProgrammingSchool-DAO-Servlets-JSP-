@@ -84,4 +84,19 @@ public class UserDao {
         }
         return result;
     }
+
+    public static List<User> loadByGroupID(Integer groupID) throws Exception {
+
+        List<String> queryParams = new ArrayList<>();
+
+        String sqlQuery = "SELECT *  FROM users WHERE user_group_id = ?";
+        queryParams.add(String.valueOf(groupID));
+
+        List<User> result = new ArrayList<>();
+        List<Map<String, String>> loadedUsers = DbService.getData(sqlQuery,queryParams);
+        for (Map<String, String> user : loadedUsers) {
+            result.add(create(user));
+        }
+        return result;
+    }
 }

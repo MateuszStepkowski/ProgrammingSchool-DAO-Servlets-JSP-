@@ -2,7 +2,7 @@ package pl.coderslab.sql;
 
 public class servicedTables {
 
-    String DataBase = "CREATE DATABASE ProgrammingSchool";
+    String DataBase = "CREATE DATABASE school";
 
     String user_group_Table =
             "CREATE TABLE user_group(" +

@@ -47,13 +47,13 @@ public class SolutionDao {
         solution.setUpdated(Timestamp.valueOf(row.get("updated")));
         solution.setDescription(row.get("description"));
         solution.setExercise( ExerciseDao.loadByID( Integer.parseInt( row.get("exercise_id") ) ) );
-        solution.setUser(UserDao.loadByID( Integer.parseInt( row.get("user_id") ) ) );
+        solution.setUser(UserDao.loadByID( Integer.parseInt( row.get("users_id") ) ) );
 
         return solution;
     }
 
     private static void addNew(Solution solution) throws Exception {
-        String query = "INSERT INTO solution(created, exercise_id, user_id) VALUES (?, ?, ?)";
+        String query = "INSERT INTO solution(created, exercise_id, users_id) VALUES (?, ?, ?)";
         List<String> queryParams = new ArrayList<>();
         queryParams.add(solution.getCreated().toString());
         queryParams.add(String.valueOf(solution.getExercise().getId()));
@@ -76,6 +76,46 @@ public class SolutionDao {
 
         List<Solution> result = new ArrayList<>();
         List<Map<String, String>> loadedSolutions = DbService.getData(sqlQuery, null);
+        for (Map<String, String> solution : loadedSolutions) {
+            result.add(create(solution));
+        }
+        return result;
+    }
+
+    public static List<Solution> load5() throws Exception {
+
+        String sqlQuery = "SELECT * FROM solution ORDER BY updated DESC LIMIT 5";
+
+        List<Solution> result = new ArrayList<>();
+        List<Map<String, String>> loadedSolutions = DbService.getData(sqlQuery, null );
+        for (Map<String, String> solution : loadedSolutions) {
+            result.add(create(solution));
+        }
+        return result;
+    }
+
+    public static List<Solution> loadByUserID(Integer userID) throws Exception {
+        List<String> queryParams = new ArrayList<>();
+
+        String sqlQuery = "SELECT *  FROM solution WHERE users_id = ? ORDER BY updated DESC";
+        queryParams.add(String.valueOf(userID));
+
+        List<Solution> result = new ArrayList<>();
+        List<Map<String, String>> loadedSolutions = DbService.getData(sqlQuery, queryParams );
+        for (Map<String, String> solution : loadedSolutions) {
+            result.add(create(solution));
+        }
+        return result;
+    }
+
+    public static List<Solution> loadByExerciseID(Integer exerciseID) throws Exception {
+        List<String> queryParams = new ArrayList<>();
+
+        String sqlQuery = "SELECT *  FROM solution WHERE exercise_id = ? ORDER BY updated DESC";
+        queryParams.add(String.valueOf(exerciseID));
+
+        List<Solution> result = new ArrayList<>();
+        List<Map<String, String>> loadedSolutions = DbService.getData(sqlQuery, queryParams );
         for (Map<String, String> solution : loadedSolutions) {
             result.add(create(solution));
         }
