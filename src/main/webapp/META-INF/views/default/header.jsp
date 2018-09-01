@@ -6,4 +6,7 @@
         <div id="content-wrapper">
             <div class="container-fluid">
 
+                <%@include file="links.jsp"%>
+
+
 
